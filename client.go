@@ -71,9 +71,12 @@ func (c *Client) Post(msg Post) error {
 	b := new(bytes.Buffer)
 	json.NewEncoder(b).Encode(msg)
 	resp, err := http.Post(c.WebhookURL, "application/json; charset=utf-8", b)
+	if err != nil {
+		return err
+	}
 	if (err == nil) && (resp.StatusCode != http.StatusOK) {
 		err = fmt.Errorf("HTTP response was %d", resp.StatusCode)
 	}
 	defer resp.Body.Close()
-	return err
+	return nil
 }
