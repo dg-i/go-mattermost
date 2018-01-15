@@ -1,4 +1,4 @@
-package mattermost
+package mattermost // import "github.com/dg-i/go-mattermost"
 
 import (
 	"bytes"
